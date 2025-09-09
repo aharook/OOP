@@ -7,24 +7,24 @@ def main():
     
     # встановлення початкових елементів
     object.items = [1, 2, 3, 4, 5]
-    print(object.items)
+    print(f"вивід списку після встановлення початкових елементів: {object.items}")
 
     # додавання елемента
     object += 6
     object = object + 7
-    print(object.items)
+    print(f"вивід після додавання елементів до кінця списку різними способами: {object.items}")
 
     # видалення елемента
     object = object - None
     object -= None
-    print(object.items)
+    print(f"вивід елементів масиву після видалення перших елементів різними способами: {object.items}")
 
     # доступ до елементів за індексом
-    print(object[2])
+    print(f"вивід елемента з індексом 2: {object[2]}")
 
     # зміна елемента за індексом
     object[0] = 99
-    print(object.items)
+    print(f"зміна елемента за індексом 0: {object.items}")
 
 
 if __name__ == "__main__":
