@@ -30,7 +30,7 @@ public:
 template<typename T> // місцевий Generics
 class Repository {
 private:
-    std::vector<T> sales;
+    std::vector<T> sales; 
 
 public:
     void addSale(const T& sale) {
@@ -90,7 +90,7 @@ int main() {
     FuelPump pump;
 
     try {
-        pump.recordSale("BrandA", 50, 1.2);
+        pump.recordSale("BrandA", 50, 1.2);     
         pump.recordSale("BrandB", 30, 1.5);
         pump.recordSale("BrandA", 30, 1.3);
         pump.recordSale("BrandC", 20, 1.4);
@@ -107,5 +107,4 @@ int main() {
     
     }
 
-    return 0;
 }
