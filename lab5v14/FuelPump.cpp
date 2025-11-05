@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-class InvalidSaleException : public std::runtime_error {
+class InvalidSaleException : public std::runtime_error { //обробка винятків
 public:
     explicit InvalidSaleException(const std::string& message)
         :std::runtime_error(message) {}
@@ -18,7 +18,7 @@ public:
 {
         if (m_liters <= 0 || m_pricePerLiter <= 0) 
         {
-            throw InvalidSaleException("Liters and price per liter must be positive values.");
+            throw InvalidSaleException("Liters and price per liter must be positive values."); // якщо від'ємне - кидаємо помилку
         }
 }
     double total() const 
@@ -28,10 +28,10 @@ public:
 
 };
 
-template<typename T>
-class SalesManager {
+template<typename T> // місцевий Generics
+class Repository {
 private:
-    std::vector<T> sales;
+    std::vector<T> sales; 
 
 public:
     void addSale(const T& sale) 
@@ -63,9 +63,9 @@ public:
     }
 };
 
-class FuelPump {
+class FuelPump { //робота з колекціями
 private:
-    SalesManager<Sale> salesManager;
+    Repository<Sale> salesManager; // композиція
 public:
     void recordSale(const std::string& brand, double liters, double pricePerLiter) 
     {
@@ -85,14 +85,14 @@ public:
 int main() {
     FuelPump pump;
     try {
-        pump.recordSale("BrandA", 50, 1.2);
+        pump.recordSale("BrandA", 50, 1.2);     
         pump.recordSale("BrandB", 30, 1.5);
         pump.recordSale("BrandA", 30, 1.3);
 
         std::cout << "Total sales: $" << pump.getTotalSales() << std::endl;
         std::cout << "Total sales for BrandA: $" << pump.getTotalSalesByBrand("BrandA") << std::endl;
         std::cout << "Total sales for BrandB: $" << pump.getTotalSalesByBrand("BrandB") << std::endl;
-    } catch (const InvalidSaleException& e) 
+    } catch (const InvalidSaleException& e) // якщо ловим помилку то кидаєм текст + уточнення помилки(див class InvalidSaleException)
     {
         std::cerr << "Error recording sale: " << +e.what() << std::endl;
     }
