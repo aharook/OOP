@@ -16,7 +16,8 @@ public:
     double pricePerLiter;
 
     Sale(const std::string& m_brand, double m_liters, double m_pricePerLiter)
-        : brand(m_brand), liters(m_liters), pricePerLiter(m_pricePerLiter) {
+        : brand(m_brand), liters(m_liters), pricePerLiter(m_pricePerLiter) 
+    {
         if (m_liters <= 0 || m_pricePerLiter <= 0) {
             throw InvalidSaleException("Liters and price per liter must be positive values."); // якщо від'ємне - кидаємо помилку
         }
@@ -33,29 +34,42 @@ private:
     std::vector<T> sales; 
 
 public:
-    void addSale(const T& sale) {
+    void addSale(const T& sale) 
+    {
         sales.push_back(sale);
     }
 
-    double totalSales() const {
+    double totalSales() const 
+    {
         double total = 0;
         for (const auto& sale : sales)
+        {
             total += sale.total();
+        }
         return total;
     }
 
-    double totalSalesByBrand(const std::string& brand) const {
+    double totalSalesByBrand(const std::string& brand) const 
+    {
         double sum = 0;
         for (const auto& sale : sales)
+        {
             if (sale.brand == brand)
+           {
                 sum += sale.total();
+           }
+             
+        }
+
         return sum;
     }
 
-    double averagePricePerLiter() const {
+    double averagePricePerLiter() const 
+    {
         double totalRevenue = 0;
         double totalLiters = 0;
-        for (const auto& sale : sales) {
+        for (const auto& sale : sales) 
+        {
             totalRevenue += sale.total();
             totalLiters += sale.liters;
         }
@@ -68,20 +82,24 @@ private:
     Repository<Sale> salesManager;  
 
 public:
-    void recordSale(const std::string& brand, double liters, double pricePerLiter) {
+    void recordSale(const std::string& brand, double liters, double pricePerLiter) 
+    {
         Sale sale(brand, liters, pricePerLiter); // композиція
         salesManager.addSale(sale);
     }
 
-    double getTotalSales() const {
+    double getTotalSales() const 
+    {
         return salesManager.totalSales();
     }
 
-    double getTotalSalesByBrand(const std::string& brand) const {
+    double getTotalSalesByBrand(const std::string& brand) const 
+    {
         return salesManager.totalSalesByBrand(brand);
     }
 
-    double getAveragePricePerLiter() const {
+    double getAveragePricePerLiter() const 
+    {
         return salesManager.averagePricePerLiter();
     }
 };
@@ -107,8 +125,5 @@ int main() {
     
     }
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 1ac1b05a3f979058b18c8448f4eb9722a15180d5
+};
+
