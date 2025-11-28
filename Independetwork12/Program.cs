@@ -45,7 +45,7 @@ class Program
 
         Console.WriteLine();
         Console.WriteLine("Demonstrating side-effects with PLINQ:");
-        var testSize = 1_000_000;
+        var testSize = 100_000;
         var testData = Enumerable.Range(0, testSize).ToArray();
         int unsafeCounter = 0;
         testData.AsParallel().ForAll(_ => unsafeCounter++);
