@@ -4,3 +4,8 @@ __pycache__/
 *.pyo
 *.pyd
 .vscode/
+*.sln
+bin
+obj
+*.csproj
+
