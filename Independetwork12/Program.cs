@@ -9,7 +9,7 @@ class Program
 {
     static void Main()
     {
-        var sizes = new int[] { 100_000, 500_000, 1_000_000 };
+        var sizes = new int[] { 1_000_000, 5_000_000, 10_000_000 };
         var rnd = new Random(52);
         var results = new List<string>();
 
@@ -45,7 +45,7 @@ class Program
 
         Console.WriteLine();
         Console.WriteLine("Demonstrating side-effects with PLINQ:");
-        var testSize = 100_000;
+        var testSize = 10_000_000;
         var testData = Enumerable.Range(0, testSize).ToArray();
         int unsafeCounter = 0;
         testData.AsParallel().ForAll(_ => unsafeCounter++);
