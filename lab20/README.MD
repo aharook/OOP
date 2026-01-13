@@ -15,15 +15,23 @@
 – Оновлення статусу замовлення та демонстрацію.
 
 вивід в консолі:
+
 ![alt text](image.png)
 
 ### 3. Виконати рефакторинг OrderProcessor для дотримання SRP:
-Після рефакторингу код був змінений для 
-Розбийте функціональність OrderProcessor на окремі інтерфейси та їхні реалізації:
+Після рефакторингу код був змінений для дотримання SRP. Кожен клас виконує лише одну свою функцію та працює. 
+Було розбийто функціональність OrderProcessor на окремі інтерфейси та їхні реалізації:
 – IOrderValidator: Метод bool IsValid(Order order).
+
 – IOrderRepository: Методи void Save(Order order), Order GetById(int id).
+
 – IEmailService: Метод void SendOrderConfirmation(Order order).
-– OrderService: Новий клас, який буде координувати роботу цих компонентів. Він
-повинен приймати залежності через конструктор (Dependency Injection).
-• Реалізуйте прості “заглушки” (mock implementations) для інтерфейсів (наприклад,
-InMemoryOrderRepository, ConsoleEmailService).
+
+– OrderService: Новий клас, який координує роботу цих компонентів. Він приймає  залежності через конструктор .
+
+Також було реалізовано  прості “заглушки”  для інтерфейсів InMemoryOrderRepository, ConsoleEmailService для коректного тестування та демонстрації.
+
+вивід в консоль: 
+
+![alt text](image-1.png)
+
