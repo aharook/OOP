@@ -58,19 +58,8 @@ private:
     IStockNotifier& notifier;
 
 public:
-    InventoryService(
-        int maxCap,
-        IItemValidator& val,
-        IItemRepository& repo,
-        ILogger& log,
-        IStockNotifier& notif
-    )
-        : itemCount(0),
-          maxCapacity(maxCap),
-          validator(val),
-          repository(repo),
-          logger(log),
-          notifier(notif) {}
+    InventoryService(int maxCap,IItemValidator& val,IItemRepository& repo,ILogger& log,IStockNotifier& notif)
+        : itemCount(0),maxCapacity(maxCap),validator(val),repository(repo),logger(log),notifier(notif) {}
 
     void AddItem(const std::string& item) {
         if (!validator.CanAddItem(itemCount, maxCapacity)) {
@@ -91,13 +80,7 @@ int main() {
     ConsoleLogger logger;
     StockNotifier notifier;
 
-    InventoryService inventory(
-        2,
-        validator,
-        repository,
-        logger,
-        notifier
-    );
+    InventoryService inventory(2,validator,repository,logger,notifier);
 
     inventory.AddItem("Sword");
     inventory.AddItem("Shield");
