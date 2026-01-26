@@ -31,7 +31,7 @@
     class Account {
     public:
         virtual double getBalance() const = 0;
-        virtual ~Account() = default;
+
     };
 
     class WithAccount : public Account {
@@ -94,7 +94,7 @@
     public:
         virtual bool isAvailable(double weight) const = 0;
         virtual double calculateCost(double weight) const = 0;
-        virtual ~Delivery() = default;
+       
     };
 
     class StandardDelivery : public Delivery {

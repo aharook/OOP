@@ -8,7 +8,7 @@
         virtual void save() = 0;
         virtual void print() = 0;
         virtual void scan() = 0;
-        virtual ~IDocument() {}
+
     };
 
 Інтерфейс IDocument порушує принципи через те, що при релізації цього інтерфейсу 1 класом, до прикладу TextDocument, ми реалізуємо всі методи крім scan(), хоча він буде змушений його реалізовувати, а при використанні цього ж інтерфейсу в ScannerDevice нам потрібен лише  scan(), але через логіку інтерфейсу ми вимушені реалізовувати всі.
@@ -102,7 +102,7 @@
     class ILogger {
     public:
         virtual void log(const std::string& msg) = 0;
-        virtual ~ILogger() {}
+
     };
 
     class FileLogger : public ILogger {
